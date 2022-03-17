@@ -1,7 +1,12 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/qb53jaghf7sj15nk?svg=true)](https://ci.appveyor.com/project/nirastor/ahj-2-3-tablesort)
+[![Build status](https://ci.appveyor.com/api/projects/status/1t3kelle6o92w58h?svg=true)](https://ci.appveyor.com/project/nirastor/meta-quotes-test)
 ***
 
-## Сортировка таблицы
+## Тестовое в MetaQuotes
 
-Сборка  
-https://nirastor.github.io/ahj-2-3-tableSort/
+## Демо  
+https://nirastor.github.io/meta-quotes-test/
+
+## Запуск
+```npm i```  
+```npm start```  
+Проект запустится на http://localhost:8000/
