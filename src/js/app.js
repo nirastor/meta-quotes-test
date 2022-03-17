@@ -1,5 +1,6 @@
 import Menu from './menu';
 import Plot from './plot';
+import Controls from './controls';
 
 class App {
   constructor() {
@@ -12,17 +13,26 @@ class App {
       { title: 'Осадки', value: 'precipitation' },
     ];
     this.menuSelected = null;
+    this.fromYearValue = null;
+    this.toYearValue = null;
+  }
+
+  setYearValue(prefix, value) {
+    this[`${prefix}YearValue`] = value;
+    this.plot.update(`Выбран пункт: ${this.menuSelected} \n От: ${this.fromYearValue} \n До: ${this.toYearValue}`);
   }
 
   setMenuSelected(value) {
     const oldValue = this.menuSelected;
     this.menuSelected = value;
     this.menu.redraw(oldValue, this.menuSelected);
-    this.plot.update(`Выбран пункт: ${this.menuSelected}`);
+    this.plot.update(`Выбран пункт: ${this.menuSelected} \n От: ${this.fromYearValue} \n До: ${this.toYearValue}`);
   }
 
   init() {
     this.menuSelected = this.menuItems[0].value;
+    this.fromYearValue = 1881;
+    this.toYearValue = 1881;
 
     this.menu = new Menu(
       this.menuEl,
@@ -33,7 +43,10 @@ class App {
     this.menu.init();
 
     this.plot = new Plot(this.plotEl);
-    this.plot.update(`Выбран пункт: ${this.menuSelected}`);
+    this.plot.update(`Выбран пункт: ${this.menuSelected}, От: ${this.fromYearValue}, До: ${this.toYearValue}`);
+
+    this.controls = new Controls(this.controlsEl, this.setYearValue.bind(this));
+    this.controls.init();
   }
 }
 
