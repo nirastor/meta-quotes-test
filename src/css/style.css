@@ -23,7 +23,21 @@ body {
   width: 200px;
   margin-right: 16px;
   padding: 8px;
-  border: 1px dotted #cccccc;
+}
+
+.menu-item {
+  border-bottom: 1px solid #cccccc;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: background-color .2s ease;
+}
+
+.menu-item:not(.menu-item--selected):hover {
+  background-color: #f5f5f5;
+}
+
+.menu-item--selected {
+  background-color: #cccccc;
 }
 
 .controls {
@@ -34,9 +48,10 @@ body {
 }
 
 .plot {
-  border: 1px dotted #cccccc;
+  border: 1px dotted black;
+  width: 800px;
+  height: 600px;
   padding: 24px;
-  background-color: blue;
 }
 
 

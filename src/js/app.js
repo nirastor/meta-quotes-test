@@ -1,10 +1,41 @@
-import Table from './table';
+import Menu from './menu';
+import Plot from './plot';
 
-const table = new Table();
+class App {
+  constructor() {
+    this.appEl = document.querySelector('.app');
+    this.menuEl = document.querySelector('.menu');
+    this.controlsEl = document.querySelector('.controls');
+    this.plotEl = document.querySelector('.plot');
+    this.menuItems = [
+      { title: 'Температура', value: 'temperature' },
+      { title: 'Осадки', value: 'precipitation' },
+    ];
+    this.menuSelected = null;
+  }
 
-table.init();
+  setMenuSelected(value) {
+    const oldValue = this.menuSelected;
+    this.menuSelected = value;
+    this.menu.redraw(oldValue, this.menuSelected);
+    this.plot.update(`Выбран пункт: ${this.menuSelected}`);
+  }
 
-table.controls.forEach((control) => control.addEventListener('click', (e) => {
-  e.preventDefault();
-  table.sort(control.dataset.control);
-}));
+  init() {
+    this.menuSelected = this.menuItems[0].value;
+
+    this.menu = new Menu(
+      this.menuEl,
+      this.menuItems,
+      this.menuSelected,
+      this.setMenuSelected.bind(this),
+    );
+    this.menu.init();
+
+    this.plot = new Plot(this.plotEl);
+    this.plot.update(`Выбран пункт: ${this.menuSelected}`);
+  }
+}
+
+const app = new App();
+app.init();
