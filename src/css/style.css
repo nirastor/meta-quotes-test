@@ -5,80 +5,38 @@
 }
 
 body {
-  padding-top: 30px;
+  background-color: #f5f5f5;
   font-family: Arial, Helvetica, sans-serif;
-
 }
 
-.table__container {
-  max-width: 960px;
+.app {
   margin: 0 auto;
-  padding: 0 20px;
-}
-
-.table {
-  border-radius: 10px;
-  border: 2px solid black;
-}
-
-.table__row {
+  padding: 24px;
+  background-color: #ffffff;
+  box-shadow: 0 0 15px 2px #cccccc;
+  max-width: 1440px;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  border-bottom: 1px solid #ccc;
-  transition: all .2s ease;
 }
 
-.table__row:last-child {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+.menu {
+  width: 200px;
+  margin-right: 16px;
+  padding: 8px;
+  border: 1px dotted #cccccc;
 }
 
-.table__header {
-  background-color: #ccc;
+.controls {
+  width: 100%;
+  padding: 8px;
+  border: 1px dotted #cccccc;
+  margin-bottom: 24px;
 }
 
-.table__header {
-  background-color: #ccc;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+.plot {
+  border: 1px dotted #cccccc;
+  padding: 24px;
+  background-color: blue;
 }
 
-.table__header .table__cell {
-  cursor: pointer;
-}
 
-.table__header .table__cell:first-child {
-  border-top-left-radius: 10px;
-}
-
-.table__header .table__cell:last-child {
-  border-top-right-radius: 10px;
-}
-
-.table__header .table__cell:hover {
-  background-color: #aaa;
-}
-
-.table__row:not(.table__header):hover {
-  background-color: #eee;
-}
-
-.table__cell {
-  line-height: 60px;
-  padding-right: 20px;
-  transition: all .2s ease;
-}
-
-.table__cell:last-child {
-  padding-right: 40px;
-}
-
-.table__cell--digit {
-  width: 15%;
-  text-align: right;
-}
-
-.table__cell--title {
-  padding-left: 10px;
-  width: 55%;
-}
