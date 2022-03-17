@@ -64,9 +64,11 @@ export default class Plot {
   }
 
   getZeroLevel(menuSelected) {
+    const { height } = this;
+
     let zeroLevel = null;
     let plotHeight = null;
-    const { height } = this;
+
     switch (menuSelected) {
       case 'temperature':
         zeroLevel = height / 2;
@@ -80,6 +82,7 @@ export default class Plot {
         zeroLevel = height;
         plotHeight = height;
     }
+
     return { zeroLevel, plotHeight };
   }
 

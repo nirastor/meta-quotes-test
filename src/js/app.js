@@ -32,7 +32,7 @@ class App {
   init() {
     this.menuSelected = this.menuItems[0].value;
     this.fromYearValue = 1881;
-    this.toYearValue = 1881;
+    this.toYearValue = 2006;
 
     this.menu = new Menu(
       this.menuEl,
