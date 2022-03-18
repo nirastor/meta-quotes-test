@@ -2,6 +2,7 @@
 ***
 
 ## Тестовое в MetaQuotes
+Условия ТЗ: Чистый JS без фреймворков + canvas
 
 ## Демо  
 https://nirastor.github.io/meta-quotes-test/
@@ -9,4 +10,4 @@ https://nirastor.github.io/meta-quotes-test/
 ## Запуск
 ```npm i```  
 ```npm start```  
-Проект запустится на http://localhost:8000/
+Проект запускается на http://localhost:8000/
