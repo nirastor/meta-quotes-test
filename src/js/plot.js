@@ -3,6 +3,13 @@ import precipitation from '../data/precipitation.json';
 
 import { GRAPH_SETTINGS } from '../refs';
 
+function getMaxAbs(arr) {
+  return arr.reduce((res, val) => {
+    const mod = Math.abs(val.v);
+    return mod > res ? mod : res;
+  }, Math.abs(arr[0].v));
+}
+
 export default class Plot {
   constructor(plotEl) {
     this.plotEl = plotEl;
@@ -51,7 +58,7 @@ export default class Plot {
   calculateScale(plotHeight) {
     const { width, data } = this;
     this.xScale = width / data.length;
-    this.yScale = plotHeight / (data.map((f) => Math.abs(f.v)).sort((a, b) => b - a)[0]);
+    this.yScale = plotHeight / getMaxAbs(data);
   }
 
   drawGraph(zeroLevel) {
@@ -59,7 +66,7 @@ export default class Plot {
       ctx, data, xScale, yScale,
     } = this;
     ctx.beginPath();
-    ctx.moveTo(0, 0);
+    ctx.moveTo(0, zeroLevel);
     data.forEach((point, index) => ctx.lineTo(index * xScale, zeroLevel - point.v * yScale));
     ctx.strokeStyle = 'blue';
     ctx.stroke();
