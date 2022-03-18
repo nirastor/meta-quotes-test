@@ -2,7 +2,9 @@ import Menu from './menu';
 import Plot from './plot';
 import Controls from './controls';
 
-import { TEMPERATURE, PRECIPITATION } from '../refs';
+import {
+  TEMPERATURE, PRECIPITATION, MIN_YEAR, MAX_YEAR,
+} from '../refs';
 
 class App {
   constructor() {
@@ -15,8 +17,8 @@ class App {
       { title: 'Осадки', value: PRECIPITATION },
     ];
     this.menuSelected = TEMPERATURE;
-    this.fromYearValue = null;
-    this.toYearValue = null;
+    this.fromYearValue = MIN_YEAR;
+    this.toYearValue = MAX_YEAR;
   }
 
   setYearValue(prefix, value) {
@@ -32,9 +34,6 @@ class App {
   }
 
   init() {
-    this.fromYearValue = 1881;
-    this.toYearValue = 2006;
-
     this.menu = new Menu(
       this.menuEl,
       this.menuItems,
