@@ -1,6 +1,8 @@
 import temperature from '../data/temperature.json';
 import precipitation from '../data/precipitation.json';
 
+import { GRAPH_SETTINGS } from '../refs';
+
 export default class Plot {
   constructor(plotEl) {
     this.plotEl = plotEl;
@@ -63,29 +65,6 @@ export default class Plot {
     ctx.stroke();
   }
 
-  getZeroLevel(menuSelected) {
-    const { height } = this;
-
-    let zeroLevel = null;
-    let plotHeight = null;
-
-    switch (menuSelected) {
-      case 'temperature':
-        zeroLevel = height / 2;
-        plotHeight = height / 2;
-        break;
-      case 'precipitation':
-        zeroLevel = height;
-        plotHeight = height;
-        break;
-      default:
-        zeroLevel = height;
-        plotHeight = height;
-    }
-
-    return { zeroLevel, plotHeight };
-  }
-
   update(menuSelected, fromYear, toYear) {
     this.setBackground();
 
@@ -98,7 +77,10 @@ export default class Plot {
     this.filterData(menuSelected, fromYear, toYear);
     this.calculateScale();
 
-    const { zeroLevel, plotHeight } = this.getZeroLevel(menuSelected);
+    const { height } = this;
+    const zeroLevel = GRAPH_SETTINGS[menuSelected].getZeroLevel(height);
+    const plotHeight = GRAPH_SETTINGS[menuSelected].getPlotHeight(height);
+
     this.calculateScale(plotHeight);
     this.drawZero(zeroLevel);
     this.drawGraph(zeroLevel);

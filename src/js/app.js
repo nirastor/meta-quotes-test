@@ -2,6 +2,8 @@ import Menu from './menu';
 import Plot from './plot';
 import Controls from './controls';
 
+import { TEMPERATURE, PRECIPITATION } from '../refs';
+
 class App {
   constructor() {
     this.appEl = document.querySelector('.app');
@@ -9,10 +11,10 @@ class App {
     this.controlsEl = document.querySelector('.controls');
     this.plotEl = document.querySelector('.plot');
     this.menuItems = [
-      { title: 'Температура', value: 'temperature' },
-      { title: 'Осадки', value: 'precipitation' },
+      { title: 'Температура', value: TEMPERATURE },
+      { title: 'Осадки', value: PRECIPITATION },
     ];
-    this.menuSelected = null;
+    this.menuSelected = TEMPERATURE;
     this.fromYearValue = null;
     this.toYearValue = null;
   }
@@ -30,7 +32,6 @@ class App {
   }
 
   init() {
-    this.menuSelected = this.menuItems[0].value;
     this.fromYearValue = 1881;
     this.toYearValue = 2006;
 
